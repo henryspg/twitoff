@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import sys
 
 
 def create_app():
@@ -8,6 +9,7 @@ def create_app():
     ## TODO.........  make the app
     @app.route('/') # what??
     def route():
-        return render_template('base.html', title='Home')
+        print("Hello, about to return the root / route stuff", file=sys.stdout)
+        return render_template('base.html', title='Homee')
 
     return app

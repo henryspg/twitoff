@@ -36,8 +36,9 @@ def add_or_update_user(username):
         )
         if tweets:
             db_user.newest_tweet_id = tweets[0].id
-            
+        print("about to loop through tweets and do stuff - twtr-py")
         for tweet in tweets:
+            # print("the tweet is: ", tweet)
             embedding = BASILICA.embed_sentence(tweet.full_text,
                                                 model='twitter')
             db_tweet = Tweet(id=tweet.id, text=tweet.full_text[:300],
@@ -53,5 +54,9 @@ def add_or_update_user(username):
 
 def insert_example_users():
     """Example data to play with."""
+    print("just entered insert_example_users")
     add_or_update_user('austen')
+    print("this is twitter.py austen")
     add_or_update_user('elonmusk')
+    print("this is elon - twtr-py")
+   
