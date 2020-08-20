@@ -3,7 +3,10 @@ from os import getenv
 import basilica
 import tweepy
 from .models import DB, Tweet, User
+# from .models import *
+# from .models import DB, User
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
@@ -11,7 +14,7 @@ load_dotenv()
 TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'SteveMartinToGo',
                  'alyankovic', 'nasa', 'sadserver', 'jkhowland', 'austen',
                  'common_squirrel', 'KenJennings', 'conanobrien',
-                 'big_ben_clock', 'IAM_SHAKESPEARE']
+                 'big_ben_clock', 'IAM_SHAKESPEARE', 'Jimmykimmel', 'BarackObama', 'StephenCurry30']
 
 TWITTER_API_KEY = getenv('TWITTER_API_KEY')
 TWITTER_API_KEY_SECRET = getenv('TWITTER_API_KEY_SECRET')
@@ -54,9 +57,18 @@ def add_or_update_user(username):
 
 def insert_example_users():
     """Example data to play with."""
-    print("just entered insert_example_users")
+    print("1- just entered insert_example_users")
     add_or_update_user('austen')
-    print("this is twitter.py austen")
+    print("2- this is twitter.py austen")
     add_or_update_user('elonmusk')
-    print("this is elon - twtr-py")
-   
+    print("3- this is elon - twtr-py")
+    add_or_update_user('jimmykimmel')
+    print("4- this is Jimmykimmel - twtr-py")
+      
+
+ # Try to upload users in one go
+def upload_users():
+    """ upload at once"""
+    for user in TWITTER_USERS:
+        add_or_update_user(user)
+        print(f"added_users {user}")
